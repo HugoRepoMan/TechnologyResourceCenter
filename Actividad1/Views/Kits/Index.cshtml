@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Actividad1.Models.Kit>
+
+@{
+    ViewData["Title"] = "Technology Kits";
+}
+
+<div class="container mt-5">
+    <h1 class="stamped-heading text-center">K I T S</h1>
+
+    <div class="row g-4">
+        @foreach (var kit in Model)
+        {
+            string statusColor = kit.GetState() == "AVAILABLE" ? "bg-success" : (kit.GetState() == "NEEDS REPAIR" ? "bg-danger" : "bg-warning text-dark");
+            string levelColor = kit.Level == "BEGINNER" ? "bg-success" : (kit.Level == "INTERMEDIATE" ? "bg-warning text-dark" : "bg-dark border border-light");
+
+            <div class="col-md-6 col-lg-4">
+                <div class="dope-card h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h4 class="mb-0">@kit.Name</h4>
+                        <span class="badge @levelColor" style="font-size: 10px; letter-spacing: 1px;">@kit.Level</span>
+                    </div>
+                    <p style="color: var(--color-steel);">@kit.Category</p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li><strong>Daily Rate:</strong> $@kit.DailyRate.ToString("F2")</li>
+                        <li><strong>Components qty:</strong> @kit.Quantity</li>
+                        <li class="mt-2">
+                            <strong>Condition:</strong>
+                            <span class="badge rounded-pill @statusColor">@kit.GetState()</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-auto">
+                        <a asp-controller="Kits" asp-action="Details" asp-route-id="@kit.Id" class="btn btn-dope-outline w-100 text-center">
+                            View Kit Specs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

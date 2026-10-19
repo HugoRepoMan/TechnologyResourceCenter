@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+    .hero-display {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        font-size: 88px;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        color: var(--color-almost-white);
+        line-height: 1;
+    }
+
+    .hero-sub {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--color-steel);
+    }
+
+    .module-card {
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        background-color: transparent;
+    }
+
+        .module-card:hover {
+            border-color: var(--color-signal-violet);
+            background-color: rgba(175, 80, 255, 0.02);
+            transform: translateY(-5px);
+        }
+
+            .module-card:hover h3 {
+                color: var(--color-signal-violet);
+            }
+</style>
+
+<div class="container mb-5">
+    <div class="row align-items-center mb-5" style="min-height: 45vh;">
+        <div class="col-lg-8">
+            <h1 class="hero-display mb-4">Technology<br>Resource Center</h1>
+            <p class="hero-sub mt-4">
+                Explore our technological resources. Everything you need for your projects,<br>
+                from high-end equipment to innovation spaces.
+            </p>
+        </div>
+        <div class="col-lg-4 text-end d-none d-lg-block mt-4 mt-lg-0">
+            <div class="p-4 rounded text-start d-inline-block w-100 shadow-sm"
+                 style="background-color: rgba(237,195,196,0.05); border: 1px solid rgba(247,249,250,0.2); border-radius: 19.2px !important;">
+                <span class="badge mb-3" style="background-color: var(--color-signal-violet); color: white; padding: 8px 12px; font-weight: 500;">SYSTEM ACTIVE</span>
+                <p class="mb-0" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--color-steel); line-height: 1.8;">
+                    LOCATION: ESPE - Santo Domingo<br />
+                    STATUS: SECURE ROUTING<br />
+                    MODULES: 4 LOADED<br />
+                    ACCESS: GRANTED
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4 mt-2">
+        <div class="col-md-6">
+            <a asp-controller="Equipment" asp-action="Index" class="dope-card module-card d-block h-100 p-5">
+                <h3 class="mb-3" style="transition: color 0.3s; font-weight: 500;">Equipment →</h3>
+                <p class="mb-0" style="color: var(--color-steel); font-size: 16px;">Laptops, projectors, cameras, routers, and more technological devices ready for deployment.</p>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="Spaces" asp-action="Index" class="dope-card module-card d-block h-100 p-5">
+                <h3 class="mb-3" style="transition: color 0.3s; font-weight: 500;">Technology Spaces →</h3>
+                <p class="mb-0" style="color: var(--color-steel); font-size: 16px;">Reserve computer labs, multimedia rooms, and innovation centers for your team.</p>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="Kits" asp-action="Index" class="dope-card module-card d-block h-100 p-5">
+                <h3 class="mb-3" style="transition: color 0.3s; font-weight: 500;">Technology Kits →</h3>
+                <p class="mb-0" style="color: var(--color-steel); font-size: 16px;">Curated bundles for robotics, IoT, streaming, and AI. Filtered by difficulty level.</p>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a asp-controller="Accessories" asp-action="Index" class="dope-card module-card d-block h-100 p-5">
+                <h3 class="mb-3" style="transition: color 0.3s; font-weight: 500;">Accessories →</h3>
+                <p class="mb-0" style="color: var(--color-steel); font-size: 16px;">Cables, adapters, webcams, and complementary resources organized by category.</p>
+            </a>
+        </div>
+    </div>
+</div>

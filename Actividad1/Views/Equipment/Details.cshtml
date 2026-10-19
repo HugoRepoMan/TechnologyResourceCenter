@@ -1,0 +1,53 @@
+﻿@model Actividad1.Models.Equipment
+
+@{
+    ViewData["Title"] = "Equipment Details";
+
+    string badgeColor = Model.GetStatus() switch
+    {
+        "AVAILABLE" => "bg-success",
+        "LAST UNIT" => "bg-warning text-dark",
+        "NOT AVAILABLE" => "bg-danger",
+        "OUT OF SERVICE" => "bg-dark border",
+        _ => "bg-secondary"
+    };
+}
+
+<div class="container mt-5">
+    <h1 class="stamped-heading text-center">D E T A I L S</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="dope-card p-5" style="border-color: var(--color-signal-violet);">
+                <h2>@Model.Name</h2>
+                <hr style="border-color: rgba(247,249,250,0.2);" />
+
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <p><strong>Category:</strong> @Model.Category</p>
+                        <p><strong>Brand:</strong> @Model.Brand</p>
+                        <p><strong>Stock:</strong> @Model.Stock</p>
+                        <p><strong>Status:</strong> <span class="badge @badgeColor">@Model.GetStatus()</span></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><strong>Daily Rate:</strong> $@Model.DailyRate.ToString("F2")</p>
+                        <p><strong>Operational:</strong> @(Model.IsOperational ? "Yes" : "No")</p>
+                    </div>
+                </div>
+                <div class="p-3 mb-4 rounded" style="background-color: rgba(247,249,250,0.05);">
+                    <h5 style="color: var(--color-signal-violet);">Estimated Rental Cost</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>1 day: $@Model.CalculateEstimatedCost(1).ToString("F2")</li>
+                        <li>3 days: $@Model.CalculateEstimatedCost(3).ToString("F2")</li>
+                        <li>5 days: $@Model.CalculateEstimatedCost(5).ToString("F2")</li>
+                    </ul>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a asp-action="Index" class="btn btn-dope-outline">Back to Equipment</a>
+                    <a asp-action="Available" class="btn btn-dope-violet">View Available Equipment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

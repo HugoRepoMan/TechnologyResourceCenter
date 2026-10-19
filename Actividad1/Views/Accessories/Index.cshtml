@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Actividad1.Models.Accessory>
+
+@{
+    ViewData["Title"] = "Accessories Catalog";
+}
+
+<div class="container mt-5">
+    <h1 class="stamped-heading text-center">A C C E S S O R I E S</h1>
+
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            string inventoryColor = item.GetInventoryStatus() switch
+            {
+                "IN STOCK" => "bg-success",
+                "LOW STOCK" => "bg-warning text-dark",
+                "OUT OF STOCK" => "bg-danger",
+                _ => "bg-secondary"
+            };
+
+            <div class="col-md-6 col-lg-3">
+                <div class="dope-card h-100 d-flex flex-column">
+                    <h5 class="mb-1">@item.Name</h5>
+                    <p style="color: var(--color-steel); font-size: 14px;">@item.Brand | @item.Category</p>
+
+                    <ul class="list-unstyled mb-4" style="font-size: 15px;">
+                        <li><strong>Price:</strong> $@item.Price.ToString("F2")</li>
+                        <li><strong>Stock:</strong> @item.Quantity</li>
+                        <li class="mt-2">
+                            <span class="badge rounded-pill @inventoryColor">@item.GetInventoryStatus()</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-auto">
+                        <a asp-controller="Accessories" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-dope-outline w-100">
+                            Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Actividad1.Models.Equipment>
+
+@{
+    ViewData["Title"] = "Available Equipment";
+}
+
+<div class="container mt-5">
+    <h1 class="stamped-heading text-center" style="color: var(--color-signal-violet);">A V A I L A B L E</h1>
+    <p class="text-center mb-5" style="color: var(--color-steel);">Showing only operational equipment currently in stock.</p>
+
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="dope-card text-center">
+                    <h5>@item.Name</h5>
+                    <p style="color: var(--color-steel);">@item.Brand</p>
+                    <h3 class="mb-3">$@item.DailyRate.ToString("F2")<span style="font-size: 14px; color: var(--color-steel);">/day</span></h3>
+                    <span class="badge bg-success mb-3">@item.GetStatus()</span>
+
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dope-outline w-100">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-dope-outline">View Full Catalog</a>
+    </div>
+</div>

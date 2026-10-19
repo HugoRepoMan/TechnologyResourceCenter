@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Actividad1.Models.Space>
+
+@{
+    ViewData["Title"] = "Technology Spaces";
+}
+
+<div class="container mt-5">
+    <h1 class="stamped-heading text-center">S P A C E S</h1>
+
+    <div class="row g-4">
+        @foreach (var space in Model)
+        {
+            string badgeColor = space.GetAvailabilityStatus() == "AVAILABLE" ? "bg-success" : "bg-danger";
+
+            <div class="col-md-6">
+                <div class="dope-card h-100 d-flex flex-column">
+                    <h3 class="mb-1">@space.Name</h3>
+                    <p class="mb-3" style="color: var(--color-steel);">@space.Location</p>
+
+                    <ul class="list-unstyled mb-4">
+                        <li><strong>Capacity:</strong> @space.Capacity people</li>
+                        <li><strong>Hourly Rate:</strong> $@space.HourlyRate.ToString("F2") / hour</li>
+                        <li class="mt-2">
+                            <strong>Status:</strong>
+                            <span class="badge rounded-pill @badgeColor">@space.GetAvailabilityStatus()</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-auto">
+                        <a asp-controller="Spaces" asp-action="Details" asp-route-id="@space.Id" class="btn btn-dope-outline w-100 text-center">
+                            View Room Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

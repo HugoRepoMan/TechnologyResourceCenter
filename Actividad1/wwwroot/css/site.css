@@ -1,0 +1,89 @@
+:root {
+    /* dope.security Theme Tokens */
+    --color-near-black: #090909;
+    --color-almost-white: #f7f9fa;
+    --color-soft-white: #f0f0f0;
+    --color-steel: #828384;
+    --color-graphite: #474747;
+    --color-signal-violet: #af50ff;
+    --radius-cards: 19.2px;
+    --radius-buttons: 8px;
+}
+
+body {
+    background-color: var(--color-near-black);
+    color: var(--color-almost-white);
+    font-family: 'Inter', system-ui, sans-serif; /* Alternativa a Whyte Inktrap */
+}
+
+/* Títulos estilo "Sello de Sección" */
+.stamped-heading {
+    font-family: 'JetBrains Mono', monospace; /* Alternativa a Whyte Inktrap Mono */
+    font-size: 48px; /* Ajustado de 74px para que quepa bien en pantallas */
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-soft-white);
+    margin-bottom: 40px;
+}
+
+/* Tarjetas sin sombras, solo bordes finos */
+.dope-card {
+    background-color: transparent;
+    border: 1px solid rgba(247, 249, 250, 0.2); /* Hairline divider */
+    border-radius: var(--radius-cards);
+    padding: 20px;
+}
+
+/* Botones principales oscuros con borde blanco */
+.btn-dope-outline {
+    background-color: var(--color-near-black);
+    color: var(--color-almost-white);
+    border: 1px solid var(--color-almost-white);
+    border-radius: var(--radius-buttons);
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-dope-outline:hover {
+        background-color: var(--color-almost-white);
+        color: var(--color-near-black);
+    }
+
+/* El toque exclusivo de Violeta */
+.btn-dope-violet {
+    background-color: var(--color-signal-violet);
+    color: white;
+    border: none;
+    border-radius: var(--radius-buttons);
+}
+/* EFECTO FROSTED NAV BAR */
+.frosted-nav {
+    background-color: rgba(51, 50, 72, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-ash, #6b6b6b);
+}
+
+/* ENLACES DEL MENÚ */
+.nav-dope-link {
+    color: var(--color-steel) !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 10px 15px !important;
+    transition: color 0.3s;
+}
+
+    .nav-dope-link:hover, .nav-dope-link.active {
+        color: var(--color-almost-white) !important;
+        text-decoration: underline;
+    }
+
+/* FOOTER MINIMALISTA */
+.coordinate-footer {
+    border-top: none !important;
+    background-color: var(--color-near-black);
+    padding: 20px 0;
+}
